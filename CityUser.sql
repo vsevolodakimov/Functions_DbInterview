@@ -5,7 +5,8 @@ CREATE FUNCTION [dbo].[CityUser]
 RETURNS TABLE
 AS
 RETURN(
-		SELECT T2.[LastName] AS 'Фамилия',
+		SELECT CASE WHEN T2.[Category] = 1 THEN 'Мужчина' ELSE 'Женщина' END AS 'Пол'
+		       T2.[LastName] AS 'Фамилия',
 			   T2.[FirstName] AS 'Имя',
 			   T2.[MiddleName] AS 'Отчество',
 			   T3.[CityName] AS 'Город'
